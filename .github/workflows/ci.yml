@@ -1,0 +1,19 @@
+name: Java build and scheduling demo
+on:
+  push:
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Compile scheduling algorithms
+        run: |
+          mkdir -p out
+          javac -d out Files/core/*.java Files/construct/*.java Files/localsearch/*.java Files/meta/*.java Files/app/Main.java
+      - name: Run example instances
+        run: java -cp out app.Main
