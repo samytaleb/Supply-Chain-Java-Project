@@ -32,3 +32,7 @@ These commands match the current Java package structure but have not been execut
 ## Notes
 
 The repository currently includes compiled `.class` artifacts. In a source-focused repository, consider ignoring generated binaries and building them locally or in CI.
+
+## Repository hygiene
+
+Generated Java `.class` files are currently checked into the repository. The added `.gitignore` prevents *new untracked* compilation outputs from being added, but previously committed binary files are still versioned until explicitly removed.
